@@ -6,15 +6,15 @@ class DishdetailComponent extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {}
+        this.state = {
+            comments: null
+        }
     }
 
-
-    
     renderComments(comments){      
         if(comments != null) {
             return (
-                <div className="col-12 col-md-5 m-1">
+                <div>
                     <h4>Comments</h4>
                     <ul className="list-unstyled">
                             {comments.map((comment) => {
@@ -26,7 +26,8 @@ class DishdetailComponent extends Component {
                                 );
                             })}
                     </ul>
-                </div>);
+                </div> 
+            );
         } else {
             return(
                 <div></div>
@@ -34,25 +35,40 @@ class DishdetailComponent extends Component {
         }
     }
 
-
+	renderDish(dish) {
+		return(
+			<Card>
+				<CardImg width="100%" src={dish.image} alt={dish.name} />
+				<CardBody>
+					<CardTitle>{dish.name}</CardTitle>
+					<CardText>{dish.description}</CardText>
+				</CardBody>
+			</Card>
+		); 
+    }
+    
     render() {
-        return (
-            <>
-                <div className="col-12 col-md-5 m-1" >
-                    <Card>
-                        <CardImg width = "100%" src={this.props.dish.image} alt={this.props.dish.name} />
-                        <CardBody>                    
-                            <CardTitle>{this.props.dish.name}</CardTitle>
-                            <CardText>{this.props.dish.description}</CardText>
-                        </CardBody>
-                    </Card>
+        if(this.props.dish != null){
+			return(
+                <div className="container">
+                    <div className="row">
+                        <div className="col-12 col-md-5 m-1" >
+
+                            {this.renderDish(this.props.dish)}
+                        </div>
+                        <div className="col-12 col-md-5 m-1" >
+                            {this.renderComments(this.props.dish.comments)}
+                        </div>
+                    </div>
                 </div>
 
-                <div >
-                    {this.renderComments(this.props.dish.comments)}
-                </div>
-            </>
-        );
+			);
+		}
+		else{
+			return(
+				<div></div>
+			);
+		}
     }
 }
 
