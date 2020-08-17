@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, CardImg, CardImgOverlay, CardText, CardBody,CardTitle} from 'reactstrap';
+import { Card, CardImg, CardText, CardBody,CardTitle} from 'reactstrap';
 
 
 
@@ -39,7 +39,7 @@ import { Card, CardImg, CardImgOverlay, CardText, CardBody,CardTitle} from 'reac
 		); 
     }
     
-    const DishDetail = (props) =>  {
+    const DishdetailComponent = (props) =>  {
         if(props.dish != null){
 			return(
                 <div className="container">
