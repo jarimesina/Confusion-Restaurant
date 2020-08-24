@@ -30,7 +30,6 @@ export class HeaderComponent extends Component {
 
     handleLogin(event) {
         this.toggleModal();
-        //how does this.username.value work?
         alert("Username: " + this.username.value + "Password" + this.password.value
             + "Remember: " + this.remember.checked);
         event.preventDefault();
